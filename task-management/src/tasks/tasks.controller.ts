@@ -30,12 +30,13 @@ export class TasksController {
   //     return this.tasksService.getAllTasks();
   //   }
   // }
-  // // Create a Task
-  // @Post()
-  // createTask(@Body() createTaskDTO: CreateTaskDTO): Task {
-  //   // console.log(createTaskDTO);
-  //   return this.tasksService.createTask(createTaskDTO);
-  // }
+
+  // Create a Task
+  @Post()
+  createTask(@Body() createTaskDTO: CreateTaskDTO): Promise<Task> {
+    // console.log(createTaskDTO);
+    return this.tasksService.createTask(createTaskDTO);
+  }
 
   // Get a Task By Id
   @Get('/:id')
@@ -44,10 +45,10 @@ export class TasksController {
   }
 
   // // Delete a Task By Id
-  // @Delete('/:id')
-  // deleteTaskById(@Param('id') id: string): void {
-  //   return this.tasksService.deleteTaskById(id); // return void
-  // }
+  @Delete('/:id')
+  deleteTaskById(@Param('id') id: string): Promise<void> {
+    return this.tasksService.deleteTaskById(id); // return void
+  }
 
   // @Patch('/:id/status')
   // updateTaskStatus(
